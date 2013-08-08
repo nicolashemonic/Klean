@@ -2,12 +2,34 @@
  * Initialization of application here
  */
 
- (function(global) {
+(function(global, $) {
 
- 	var app = {};
+ 	var app = {
+ 		applyBindings: []
+ 	};
 
- 	app.config = {};
+ 	// Method Async
+ 	
+ 	$.getJSON('scripts/data.json', function(data){
+ 		global.app.preload = data;
 
- 	global.app = global.app ? global.app : app;
+ 		for (var viewModel = 0; viewModel < app.applyBindings.length; viewModel++) {
+ 			app.applyBindings[viewModel]();
+ 		}
+ 	});
 
- })(window);
+ 	if (global.app != app) {
+ 		global.app = app;
+ 	}
+/*	
+ 	// Method Sync
+
+ 	$(global.document).ready(function(){
+ 		var JSONpreload = $('#app-preload').html();
+
+ 		if (JSONpreload) {
+ 			global.app = JSON.parse(JSONpreload);
+ 		}
+ 	});
+*/
+})(window, jQuery);
