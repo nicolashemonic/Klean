@@ -2,7 +2,7 @@
  * To share with any viewmodel
  */
 
- var foobarService = (function(){
+ var foobarService = (function(global, ko){
  	var instance;
 
  	function init(){
@@ -10,7 +10,7 @@
  		function privateMethod() {}
 
  		return {
- 			publicProperty: 'Foobar Service',
+ 			publicProperty: ko.observable('Foobar Service'),
  			publicMethod: function() {}
  		}
  	}
@@ -23,4 +23,4 @@
  			return instance;
  		}
  	}
- })();
+ })(window, ko);

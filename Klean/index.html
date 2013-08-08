@@ -19,10 +19,18 @@
   </head>
   <body>
 
-    <div class="container" id="index-view-model">
-      <h1>Hello, world!</h1>
-      <p data-bind="text: property"></p>
-      <p data-bind="text: foobarService.publicProperty"></p>
+    <div class="container jumbotron" id="view-model-a">
+      <h1 data-bind="text: property"></h1>
+      <p data-bind="text: JSONpreload.property"></p>
+      <p data-bind="html: foobarService.publicProperty()"></p>
+      <a class="btn btn-success" data-bind="click: updateFoobarService">Update Foobar Service</a>
+    </div>
+
+    <div class="container jumbotron" id="view-model-b">
+      <h1 data-bind="text: property"></h1>
+      <p data-bind="text: JSONpreload.property"></p>
+      <p data-bind="html: foobarService.publicProperty()"></p>
+      <a class="btn btn-info" data-bind="click: updateFoobarService">Update Foobar Service</a>
     </div>
 
     <!-- Knockout -->
@@ -43,7 +51,8 @@
     <!-- App Services -->
     <script src="scripts/services/foobar.js"></script>
     <!-- App Context -->
-    <script src="scripts/viewmodels/index.js"></script>
+    <script src="scripts/viewmodels/view-model-a.js"></script>
+    <script src="scripts/viewmodels/view-model-b.js"></script>
 
   </body>
 </html>
